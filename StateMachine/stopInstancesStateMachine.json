@@ -1,0 +1,33 @@
+{
+  "Comment": "A description of my state machine",
+  "StartAt": "Wait 6 hours",
+  "States": {
+    "Wait 6 hours": {
+      "Type": "Wait",
+      "Seconds": 21600,
+      "Next": "Lambda Invoke: stopNonCompliantEC2Instances"
+    },
+    "Lambda Invoke: stopNonCompliantEC2Instances": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "OutputPath": "$.Payload",
+      "Parameters": {
+        "Payload.$": "$",
+        "FunctionName": "arn:aws"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 6,
+          "BackoffRate": 2
+        }
+      ],
+      "End": true
+    }
+  }
+}
