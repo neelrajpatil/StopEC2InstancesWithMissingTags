@@ -1,5 +1,5 @@
 # Stop AWS EC2 Instances with missing or empty name & environment tags - Serverless
-Check if AWS EC2 instances that are running have valid "Name" and "Environment" tags, if not then notify the creator and stop the instance after 6 hours.
+Every hour check if AWS EC2 instances that are running have valid "Name" and "Environment" tags, if not then notify the creator and stop the instance after 6 hours.
 
 Using: EventBridge(Cloudwatch), Lambda, Step Functions, AWS SDK for Python (BOTO3)
 
