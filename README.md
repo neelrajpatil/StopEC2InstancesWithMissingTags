@@ -39,7 +39,7 @@ Using: EventBridge(Cloudwatch), Lambda, Step Functions, AWS SDK for Python (BOTO
 
 3) Create Two Lambda Functions using the files in the Lambda directory
     - *For both functions, Set timeout to 6 seconds*
-    - *For stopNonCompliantEC2Instances function, Change the hard-coded ARN for state machine on line 62 with the ARN for your state machine*
+    - *For stopNonCompliantEC2Instances function, Change the hard-coded ARN for state machine on line 64 with the ARN for your state machine*
         
 4) Create AWS Step Function - State Machine using the JSON file in the StateMachine directory
     - *Change ARN for lambda function in the JSON file with the ARN for your function*
