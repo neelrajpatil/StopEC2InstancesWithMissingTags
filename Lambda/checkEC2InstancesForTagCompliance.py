@@ -48,7 +48,6 @@ def sendEmailReminder(id, tags):
         },
     )
 
-    # print(response)
     return response["MessageId"]
 
 
@@ -61,7 +60,7 @@ def lambda_handler(event, context):
 
     sfn_client = boto3.client("stepfunctions")
     state_machine_arn = (
-        "arn:aws:states:us-east-1:076496163195:stateMachine:MyStateMachine"
+        "arn:aws:"
     )
 
     nonCompliantInstancesIDs = []
@@ -90,6 +89,5 @@ def lambda_handler(event, context):
             name=f"RanAt{int(datetime.datetime.now().timestamp())}",
             input=json.dumps(response),
         )
-        print(stepfunction_response)
 
     return response
