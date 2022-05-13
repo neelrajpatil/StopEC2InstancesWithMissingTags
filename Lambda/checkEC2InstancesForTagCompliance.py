@@ -57,7 +57,8 @@ def lambda_handler(event, context):
     instances = ec2.instances.filter(
         Filters=[{"Name": "instance-state-name", "Values": ["running"]}]
     )
-
+    
+    #Change state_machine_arn to the arn of your state machine
     sfn_client = boto3.client("stepfunctions")
     state_machine_arn = (
         "arn:aws:"
